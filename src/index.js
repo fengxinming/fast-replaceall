@@ -1,4 +1,6 @@
-import transIndex from './transIndex';
+import transIndex from 'celia/transIndex';
+import isString from 'celia/isString';
+import isFunction from 'celia/isFunction';
 
 /**
  * 字符串替换函数
@@ -9,8 +11,8 @@ import transIndex from './transIndex';
  * @param {object=} options
  */
 export default function replaceAll(str, substr, replacement, options) {
-  if (!isString(str) ||
-      !(isString(substr) && substr.length > 0)) {
+  if (!isString(str)
+      || !(isString(substr) && substr.length > 0)) {
     return str;
   }
 
@@ -24,7 +26,7 @@ export default function replaceAll(str, substr, replacement, options) {
   let result = ''; // 返回新字符串
   const replacer = isFunction(replacement)
     ? (v, offset) => v(str.substr(offset, substrLen), offset, str)
-    : v => v; // 替换函数
+    : (v) => v; // 替换函数
   let matchedOffset = -1; // 匹配字符偏移量
 
   // 找到匹配字符串的位置
@@ -33,7 +35,8 @@ export default function replaceAll(str, substr, replacement, options) {
   if (caseInsensitive) {
     lamb = str.toLowerCase();
     finder = (s, sub, i) => s.indexOf(sub.toLowerCase(), i);
-  } else {
+  }
+  else {
     lamb = str;
     finder = (s, sub, i) => s.indexOf(sub, i);
   }
