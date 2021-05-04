@@ -1,4 +1,4 @@
-import replaceAll from '../src/replaceAll';
+import replaceAll from '../src/index';
 
 it('测试 replaceAll 方法', () => {
   expect(replaceAll(
