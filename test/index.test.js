@@ -1,24 +1,30 @@
-import className from '../src/index';
+import replaceAll from '../src/replaceAll';
 
-it('测试 className 方法', () => {
-  expect(className('one')).toBe('one');
-  expect(className([])).toBe('');
-  expect(className()).toBe('');
-  expect(className(null)).toBe('');
-  expect(className(true)).toBe('');
-  expect(className('one', 'two', 'three')).toBe('one two three');
-  expect(className(['one', 'two', 'three'])).toBe('one two three');
-  expect(className({ one: true, two: true, three: false })).toBe('one two');
-  expect(className('one', 'two', { four: true, three: false })).toBe('one two four');
-  expect(
-    className(
-      'one', { two: true, three: false },
-      { four: 'four', five: true }, 6, {}
-    )
-  ).toBe('one two four five 6');
-  expect(
-    className(
-      ['one', 'two'], ['three'], ['four', ['five']], [{ six: true }, { seven: false }]
-    )
-  ).toBe('one two three four five six');
+it('测试 replaceAll 方法', () => {
+  expect(replaceAll(
+    'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?',
+    'dog',
+    'monkey'
+  )).toBe('The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?');
+  expect(replaceAll(null)).toBe(null);
+  expect(replaceAll('这是一个字符串', null)).toBe('这是一个字符串');
+  expect(replaceAll('这是一个字符串', '')).toBe('这是一个字符串');
+  expect(replaceAll('这是一个字符串', 'dog', 'monkey')).toBe('这是一个字符串');
+  expect(replaceAll('这是一个字符串', '一', (match, offset) => {
+    expect(offset).toBe(2);
+  })).toBe('这是undefined个字符串');
+  expect(replaceAll('The quick brown fox jumps over the lazy dog. ', 'DOG', 'monkey', { caseInsensitive: true }))
+    .toBe('The quick brown fox jumps over the lazy monkey. ');
+  expect(replaceAll('The quick brown fox jumps over the lazy dog. ', 'DOG', 'monkey', { fromIndex: -1 }))
+    .toBe('The quick brown fox jumps over the lazy dog. ');
+  expect(replaceAll('The quick brown fox jumps over the lazy dog. ', 'dog', 'monkey', { fromIndex: -1 }))
+    .toBe('The quick brown fox jumps over the lazy dog. ');
+  expect(replaceAll('The quick brown fox jumps over the lazy dog. ', 'dog', 'monkey', { fromIndex: -5 }))
+    .toBe('The quick brown fox jumps over the lazy monkey. ');
+  expect(replaceAll(
+    'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?',
+    'dog',
+    'monkey',
+    { fromIndex: -44 }
+  )).toBe('The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?');
 });
