@@ -1,6 +1,6 @@
 {
   "name": "fast-replaceall",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Replace all substring matches in a string.",
   "main": "cjs.js",
   "module": "esm.js",
