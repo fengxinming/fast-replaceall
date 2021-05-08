@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/fengxinming/fast-replaceall#readme",
   "dependencies": {
-    "celia": "^8.0.1"
+    "celia": "^8.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

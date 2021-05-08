@@ -1,6 +1,6 @@
-import transIndex from 'celia/transIndex';
-import isString from 'celia/isString';
-import isFunction from 'celia/isFunction';
+import transIndex from 'celia/es/transIndex';
+import isString from 'celia/es/isString';
+import isFunction from 'celia/es/isFunction';
 
 /**
  * 字符串替换函数
