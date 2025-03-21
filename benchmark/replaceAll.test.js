@@ -1,14 +1,19 @@
-const replaceAll = require('../dist/cjs');
+const replaceAll = require('../dist/index');
 
 // 测试 max
 const str = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+const replacement = 'monkey';
 
 module.exports = {
   '【String.prototype.replace】': function () {
-    str.replace(/dog/g, 'monkey');
+    str.replace(/dog/g, replacement);
+  },
+
+  '【String.prototype.replaceAll】': function () {
+    str.replaceAll('dog', replacement);
   },
 
   '【replaceAll】': function () {
-    replaceAll(str, 'monkey');
+    replaceAll(str, replacement);
   }
 };
