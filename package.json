@@ -1,6 +1,6 @@
 {
   "name": "fast-replaceall",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Replace all substring matches in a string.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -47,5 +47,8 @@
     "vite": "^6.1.0",
     "vite-plugin-external": "^6.0.0",
     "vitest": "^3.0.9"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
